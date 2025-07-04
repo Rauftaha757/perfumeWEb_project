@@ -4,7 +4,7 @@ import { perfumes } from '@/lib/perfumes';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { useCart } from '@/contexts/cart-context';
@@ -12,8 +12,9 @@ import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { ShieldCheck } from 'lucide-react';
 
-export default function PerfumePage({ params }: { params: { id: string } }) {
-  const perfume = perfumes.find((p) => p.id === parseInt(params.id));
+export default function PerfumePage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params);
+  const perfume = perfumes.find((p) => p.id === parseInt(resolvedParams.id));
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const { addToCart } = useCart();
 
