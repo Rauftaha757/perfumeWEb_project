@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'jafperfumes.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
