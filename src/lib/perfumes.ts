@@ -1,0 +1,66 @@
+import type { Perfume } from '@/types';
+
+export const perfumes: Perfume[] = [
+  {
+    id: 1,
+    name: 'Elysian Fields',
+    description: 'A heavenly blend of white florals and fresh citrus, grounded by a soft musky base. Evokes a sense of serene, sun-drenched meadows.',
+    price: 180,
+    image: 'https://placehold.co/600x600.png',
+    dataAiHint: 'perfume bottle elegant',
+    notes: ['Jasmine', 'Bergamot', 'White Musk'],
+    sizes: ['50ml', '100ml'],
+  },
+  {
+    id: 2,
+    name: 'Midnight Oud',
+    description: 'A rich, mysterious fragrance combining smoky oud with spicy saffron and a hint of rose. Perfect for evening wear and special occasions.',
+    price: 220,
+    image: 'https://placehold.co/600x600.png',
+    dataAiHint: 'dark perfume bottle',
+    notes: ['Oud', 'Saffron', 'Rose'],
+    sizes: ['50ml', '100ml'],
+  },
+  {
+    id: 3,
+    name: 'Coastal Drift',
+    description: 'A fresh, aquatic scent with notes of sea salt, sage, and driftwood. Captures the essence of a windswept shoreline.',
+    price: 165,
+    image: 'https://placehold.co/600x600.png',
+    dataAiHint: 'blue perfume water',
+    notes: ['Sea Salt', 'Sage', 'Driftwood'],
+    sizes: ['50ml', '100ml'],
+  },
+  {
+    id: 4,
+    name: 'Velvet Orchid',
+    description: 'An opulent and dramatic floral signature, this fragrance is a bold statement of glamour and luxury with its black orchid and spice notes.',
+    price: 250,
+    image: 'https://placehold.co/600x600.png',
+    dataAiHint: 'luxury perfume gold',
+    notes: ['Black Orchid', 'Ylang-Ylang', 'Patchouli'],
+    sizes: ['50ml', '100ml'],
+  },
+  {
+    id: 5,
+    name: 'Amber Glow',
+    description: 'A warm and inviting scent that wraps you in a cozy blanket of amber, vanilla, and sandalwood. Comforting and sophisticated.',
+    price: 195,
+    image: 'https://placehold.co/600x600.png',
+    dataAiHint: 'warm perfume amber',
+    notes: ['Amber', 'Vanilla', 'Sandalwood'],
+    sizes: ['50ml', '100ml'],
+  },
+  {
+    id: 6,
+    name: 'Citrus Grove',
+    description: 'A vibrant and zesty fragrance bursting with the freshness of Sicilian lemon, mandarin, and basil. Energizing and uplifting.',
+    price: 150,
+    image: 'https://placehold.co/600x600.png',
+    dataAiHint: 'fresh perfume citrus',
+    notes: ['Lemon', 'Mandarin', 'Basil'],
+    sizes: ['50ml', '100ml'],
+  },
+];
+
+export const allPerfumeNames = perfumes.map(p => p.name);
