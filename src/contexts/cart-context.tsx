@@ -7,8 +7,8 @@ import { useToast } from '@/hooks/use-toast';
 interface CartContextType {
   cartItems: CartItem[];
   addToCart: (perfume: Perfume, size: string) => void;
-  removeFromCart: (itemId: number) => void;
-  updateQuantity: (itemId: number, quantity: number) => void;
+  removeFromCart: (itemId: number, size: string) => void;
+  updateQuantity: (itemId: number, size: string, quantity: number) => void;
   clearCart: () => void;
   cartCount: number;
   subtotal: number;
@@ -63,17 +63,17 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setIsCartOpen(true);
   };
 
-  const removeFromCart = (itemId: number) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+  const removeFromCart = (itemId: number, size: string) => {
+    setCartItems((prevItems) => prevItems.filter((item) => !(item.id === itemId && item.size === size)));
   };
 
-  const updateQuantity = (itemId: number, quantity: number) => {
+  const updateQuantity = (itemId: number, size: string, quantity: number) => {
     if (quantity < 1) {
-      removeFromCart(itemId);
+      removeFromCart(itemId, size);
       return;
     }
     setCartItems((prevItems) =>
-      prevItems.map((item) => (item.id === itemId ? { ...item, quantity } : item))
+      prevItems.map((item) => (item.id === itemId && item.size === size ? { ...item, quantity } : item))
     );
   };
   

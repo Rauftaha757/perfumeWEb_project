@@ -7,7 +7,6 @@ import {
   SheetHeader,
   SheetTitle,
   SheetFooter,
-  SheetTrigger,
   SheetClose,
 } from '@/components/ui/sheet';
 import { Button } from './ui/button';
@@ -32,7 +31,7 @@ export function ShoppingCart() {
             <ScrollArea className="flex-1">
               <div className="px-6">
                 {cartItems.map((item) => (
-                  <div key={item.id} className="flex items-start justify-between gap-4 py-4">
+                  <div key={`${item.id}-${item.size}`} className="flex items-start justify-between gap-4 py-4">
                     <div className="flex items-center gap-4">
                       <Image
                         src={item.image}
@@ -46,17 +45,17 @@ export function ShoppingCart() {
                         <p className="text-sm text-muted-foreground">{item.size}</p>
                         <p className="text-sm font-medium">${item.price.toFixed(2)}</p>
                         <div className="mt-2 flex items-center gap-2">
-                          <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateQuantity(item.id, item.quantity - 1)}>
+                          <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateQuantity(item.id, item.size, item.quantity - 1)}>
                             <Minus className="h-3 w-3" />
                           </Button>
                           <span className="w-8 text-center">{item.quantity}</span>
-                          <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+                          <Button variant="outline" size="icon" className="h-6 w-6" onClick={() => updateQuantity(item.id, item.size, item.quantity + 1)}>
                             <Plus className="h-3 w-3" />
                           </Button>
                         </div>
                       </div>
                     </div>
-                    <Button variant="ghost" size="icon" className="text-muted-foreground" onClick={() => removeFromCart(item.id)}>
+                    <Button variant="ghost" size="icon" className="text-muted-foreground" onClick={() => removeFromCart(item.id, item.size)}>
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -76,7 +75,7 @@ export function ShoppingCart() {
                 <p className="text-xs text-muted-foreground">Shipping and taxes calculated at checkout.</p>
                 <SheetClose asChild>
                   <Button asChild className="w-full">
-                    <Link href="#">Proceed to Checkout</Link>
+                    <Link href="/checkout">Proceed to Checkout</Link>
                   </Button>
                 </SheetClose>
                  <Button variant="outline" className="w-full" onClick={clearCart}>Clear Cart</Button>
