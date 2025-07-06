@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview Perfume recommendation flow.
@@ -30,6 +29,7 @@ const RecommendationPromptInputSchema = z.object({
 
 const recommendationPrompt = ai.definePrompt({
     name: 'perfumeRecommendationPrompt',
+    model: 'googleai/gemini-pro',
     input: {schema: RecommendationPromptInputSchema},
     output: {schema: PerfumeRecommendationOutputSchema},
     prompt: `You are a perfume recommendation expert for an online store called Scentique.
