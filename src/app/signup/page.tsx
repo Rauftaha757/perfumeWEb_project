@@ -28,7 +28,7 @@ const formSchema = z.object({
 export default function SignupPage() {
   const { toast } = useToast();
   const router = useRouter();
-  const { login } = useAuth();
+  const { signup } = useAuth();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,7 +39,7 @@ export default function SignupPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      login(values.email);
+      await signup(values.email, values.password);
       toast({
         title: 'Account Created',
         description: 'Welcome to Scentique! You have been signed in.',
@@ -49,7 +49,7 @@ export default function SignupPage() {
       toast({
         variant: 'destructive',
         title: 'Signup Failed',
-        description: 'An unexpected error occurred.',
+        description: error.message || 'An unexpected error occurred.',
       });
     }
   }

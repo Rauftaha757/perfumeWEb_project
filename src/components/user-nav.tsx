@@ -20,8 +20,8 @@ export function UserNav() {
   const { user, loading, logout } = useAuth();
   const router = useRouter();
 
-  const handleSignOut = () => {
-    logout();
+  const handleSignOut = async () => {
+    await logout();
     router.push('/');
   };
 

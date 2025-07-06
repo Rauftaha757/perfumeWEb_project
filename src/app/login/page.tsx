@@ -39,7 +39,7 @@ export default function LoginPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      login(values.email);
+      await login(values.email, values.password);
       toast({
         title: 'Login Successful',
         description: "Welcome back to Scentique!",
@@ -49,7 +49,7 @@ export default function LoginPage() {
       toast({
         variant: 'destructive',
         title: 'Login Failed',
-        description: 'An unexpected error occurred.',
+        description: error.message || 'An unexpected error occurred.',
       });
     }
   }

@@ -36,8 +36,8 @@ export default function ProfilePage() {
     )
   }
 
-  const handleSignOut = () => {
-    logout();
+  const handleSignOut = async () => {
+    await logout();
     router.push('/');
   };
 
